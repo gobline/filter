@@ -175,7 +175,7 @@ The check on the data type is quite strict. For example:
 ```new Mendo\Filter\Sanitizer\Trim())->sanitize(42)``` will throw an ```\InvalidArgumentException``` exception, because the *Trim* sanitizer expects a string.
 
 The only exception is made for numeric strings ('42' is considered a valid int) and booleans ('', '0', '1', 0 and 1 are valid booleans).
-This is because the filters are intended to sanitize and validate user input, and the input data are received as strings (at least in a web context).
+This is because the filters are intended to sanitize and validate user input, and the input data are generally received as strings (at least in a web context).
 
 ## Installation
 
