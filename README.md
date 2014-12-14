@@ -111,7 +111,7 @@ $validator->setTranslator($translator);
 
 ## Filter Funnels
 
-The real value of the component is its ability to create filter funnels. Filter funnels allow you to filter a variable through multiple sanitzers and/or validators at once.
+The real value of the component is its ability to create filter funnels. Filter funnels allow you to filter a variable through multiple sanitizers and/or validators at once.
 
 Below is an example that trims the variable and checks if it contains a valid age (between 0 and 110). Eventually it will cast the variable to an integer.
 
