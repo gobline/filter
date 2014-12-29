@@ -128,7 +128,7 @@ $funnel->filter("foo"); // returns null
 echo $validator->getMessage(); // prints "The input is not a valid number"
 ```
 
-If one of the validators invalidates data, the funnel will return ```null``` (and will not execute the sanitzers and validators that follow).
+If one of the validators invalidates data, the funnel will return ```null``` (and will not execute the sanitizers and validators that follow).
 
 It is possible to register filters in a class map in order to reference the filters by classname when using the funnel.
 Built-in filters are registered in the class map by default. The example above could be rewritten as follows:
