@@ -35,8 +35,6 @@ There are two types of validators.
 * **data validators** check if the data meets certain qualifications.
 * **data type validators** (or simply type validators) check if the variable is of a certain data type.
 
-One key difference lies in that *type validators* don't throw exceptions whereas *data validators* do throw exceptions. More on exceptions handling below.
-
 ```php
 (new Mendo\Filter\Validator\Email())->isValid('mdecaffmeyer@gmail.com') // returns true
 
@@ -52,6 +50,7 @@ One key difference lies in that *type validators* don't throw exceptions whereas
 ### Built-in Validators
 
 Data validators:
+* Alpha
 * Alphanum
 * Between
 * Email
@@ -61,6 +60,7 @@ Data validators:
 * NoTags
 * NotEmpty
 * Regex
+* Value
 
 Data type validators:
 * Boolean *('', '0', '1', 0 and 1 are considered valid booleans)*
@@ -167,15 +167,6 @@ $age = (new Mendo\Filter\FilterFunnel())
 ```
 
 Note that ```setMessageTemplate()``` should directly follow an ```addValidator()``` call or an exception will be thrown.
-
-## Note on Exceptions
-
-Built-in sanitizers and validators throw an exception if the variables' data type to filter is not as expected.
-The check on the data type is quite strict. For example:
-```new Mendo\Filter\Sanitizer\Trim())->sanitize(42)``` will throw an ```\InvalidArgumentException``` exception, because the *Trim* sanitizer expects a string.
-
-The only exception is made for numeric strings ('42' is considered a valid int) and booleans ('', '0', '1', 0 and 1 are valid booleans).
-This is because the filters are intended to sanitize and validate user input, and the input data are generally received as strings (at least in a web context).
 
 ## Installation
 
