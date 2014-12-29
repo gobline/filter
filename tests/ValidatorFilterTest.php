@@ -84,6 +84,62 @@ class ValidatorFilterTest extends PHPUnit_Framework_TestCase
         (new Validator\NoTags())->isValid([]);
     }
 
+    public function testNotEmptyValidator()
+    {
+        $this->assertTrue((new Validator\NotEmpty())->isValid('hello world'));
+        $this->assertFalse((new Validator\NotEmpty())->isValid(''));
+    }
+
+    public function testNotEmptyValidatorValueInt()
+    {
+        $this->setExpectedException('\InvalidArgumentException', 'type');
+        (new Validator\NotEmpty())->isValid(42);
+    }
+
+    public function testNotEmptyValidatorValueBoolean()
+    {
+        $this->setExpectedException('\InvalidArgumentException', 'type');
+        (new Validator\NotEmpty())->isValid(true);
+    }
+
+    public function testNotEmptyValidatorValueNull()
+    {
+        $this->setExpectedException('\InvalidArgumentException', 'type');
+        (new Validator\NotEmpty())->isValid(null);
+    }
+
+    public function testNotEmptyValidatorValueNonScalar()
+    {
+        $this->setExpectedException('\InvalidArgumentException', 'type');
+        (new Validator\NotEmpty())->isValid([]);
+    }
+
+    public function testValueValidator()
+    {
+        $this->assertTrue((new Validator\Value('hello', 'world', 42))->isValid('hello'));
+        $this->assertFalse((new Validator\Value('hello', 'world', 42))->isValid('hello world'));
+        $this->assertTrue((new Validator\Value('hello', 'world', 42))->isValid(42));
+        $this->assertFalse((new Validator\Value('hello', 'world', 42))->isValid(''));
+    }
+
+    public function testValueValidatorValueBoolean()
+    {
+        $this->setExpectedException('\InvalidArgumentException', 'type');
+        (new Validator\Value('hello'))->isValid(true);
+    }
+
+    public function testValueValidatorValueNull()
+    {
+        $this->setExpectedException('\InvalidArgumentException', 'type');
+        (new Validator\Value('hello'))->isValid(null);
+    }
+
+    public function testValueValidatorValueNonScalar()
+    {
+        $this->setExpectedException('\InvalidArgumentException', 'type');
+        (new Validator\Value('hello'))->isValid([]);
+    }
+
     public function testLengthValidator()
     {
         $this->assertTrue((new Validator\Length(3, 6))->isValid('abc'));
@@ -212,6 +268,40 @@ class ValidatorFilterTest extends PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('\InvalidArgumentException', 'type');
         (new Validator\Alphanum())->isValid([]);
+    }
+
+    public function testAlphaValidator()
+    {
+        $this->assertFalse((new Validator\Alpha())->isValid('abc123'));
+        $this->assertTrue((new Validator\Alpha())->isValid('abc'));
+        $this->assertFalse((new Validator\Alpha())->isValid(' _abc_ '));
+        $this->assertFalse((new Validator\Alpha('_'))->isValid(' _abc_ '));
+        $this->assertTrue((new Validator\Alpha('_ '))->isValid(' _abc_ '));
+        $this->assertFalse((new Validator\Alpha())->isValid(''));
+    }
+
+    public function testAlphaValidatorValueInt()
+    {
+        $this->setExpectedException('\InvalidArgumentException', 'type');
+        (new Validator\Alpha())->isValid(42);
+    }
+
+    public function testAlphaValidatorValueBoolean()
+    {
+        $this->setExpectedException('\InvalidArgumentException', 'type');
+        (new Validator\Alpha())->isValid(true);
+    }
+
+    public function testAlphaValidatorValueNull()
+    {
+        $this->setExpectedException('\InvalidArgumentException', 'type');
+        (new Validator\Alpha())->isValid(null);
+    }
+
+    public function testAlphaValidatorValueNonScalar()
+    {
+        $this->setExpectedException('\InvalidArgumentException', 'type');
+        (new Validator\Alpha())->isValid([]);
     }
 
     public function testBetweenValidator()

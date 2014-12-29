@@ -25,6 +25,7 @@ class FilterClassMap
     public function __construct()
     {
         $this->validators = [
+            'alpha' => '\\Mendo\\Filter\\Validator\\Alpha',
             'alphanum' => '\\Mendo\\Filter\\Validator\\Alphanum',
             'between' => '\\Mendo\\Filter\\Validator\\Between',
             'boolean' => '\\Mendo\\Filter\\Validator\\Boolean',
@@ -36,6 +37,7 @@ class FilterClassMap
             'min' => '\\Mendo\\Filter\\Validator\\Min',
             'notags' => '\\Mendo\\Filter\\Validator\\NoTags',
             'regex' => '\\Mendo\\Filter\\Validator\\Regex',
+            'value' => '\\Mendo\\Filter\\Validator\\Value',
         ];
 
         $this->sanitizers = [
@@ -79,12 +81,27 @@ class FilterClassMap
      */
     public function getValidator($name)
     {
-        $name = (string) $name;
-        if (!isset($this->validators[$name])) {
+        if (!$this->hasValidator($name)) {
             throw new \InvalidArgumentException('validator "'.$name.'" not found');
         }
 
         return $this->validators[$name];
+    }
+
+    /**
+     * @param string $name
+     *
+     * @throws \InvalidArgumentException
+     *
+     * @return bool
+     */
+    public function hasValidator($name)
+    {
+        if ((string) $name === '') {
+            throw new \InvalidArgumentException('$name cannot be empty');
+        }
+
+        return isset($this->validators[$name]);
     }
 
     /**
@@ -117,11 +134,26 @@ class FilterClassMap
      */
     public function getSanitizer($name)
     {
-        $name = (string) $name;
-        if (!isset($this->sanitizers[$name])) {
+        if (!$this->hasSanitizer($name)) {
             throw new \InvalidArgumentException('sanitizer "'.$name.'" not found');
         }
 
         return $this->sanitizers[$name];
+    }
+
+    /**
+     * @param string $name
+     *
+     * @throws \InvalidArgumentException
+     *
+     * @return bool
+     */
+    public function hasSanitizer($name)
+    {
+        if ((string) $name === '') {
+            throw new \InvalidArgumentException('$name cannot be empty');
+        }
+
+        return isset($this->sanitizers[$name]);
     }
 }
