@@ -22,7 +22,7 @@ class LTrim implements SanitizerInterface
      */
     public function sanitize($value)
     {
-        if (!is_string($value)) {
+        if (!is_scalar($value)) {
             throw new \InvalidArgumentException('Unexpected type: '.gettype($value));
         }
 

@@ -24,14 +24,12 @@ class SanitizerFilterTest extends PHPUnit_Framework_TestCase
 
     public function testTrimSanitizerValueInt()
     {
-        $this->setExpectedException('\InvalidArgumentException', 'type');
-        (new Sanitizer\Trim())->sanitize(42);
+        $this->assertSame('42', (new Sanitizer\Trim())->sanitize(42));
     }
 
     public function testTrimSanitizerValueBoolean()
     {
-        $this->setExpectedException('\InvalidArgumentException', 'type');
-        (new Sanitizer\Trim())->sanitize(true);
+        $this->assertSame('1', (new Sanitizer\Trim())->sanitize(true));
     }
 
     public function testTrimSanitizerValueNull()
@@ -53,14 +51,12 @@ class SanitizerFilterTest extends PHPUnit_Framework_TestCase
 
     public function testLTrimSanitizerValueInt()
     {
-        $this->setExpectedException('\InvalidArgumentException', 'type');
-        (new Sanitizer\LTrim())->sanitize(42);
+        $this->assertSame('42', (new Sanitizer\LTrim())->sanitize(42));
     }
 
     public function testLTrimSanitizerValueBoolean()
     {
-        $this->setExpectedException('\InvalidArgumentException', 'type');
-        (new Sanitizer\LTrim())->sanitize(true);
+        $this->assertSame('1', (new Sanitizer\LTrim())->sanitize(true));
     }
 
     public function testLTrimSanitizerValueNull()
@@ -82,14 +78,12 @@ class SanitizerFilterTest extends PHPUnit_Framework_TestCase
 
     public function testRTrimSanitizerValueInt()
     {
-        $this->setExpectedException('\InvalidArgumentException', 'type');
-        (new Sanitizer\RTrim())->sanitize(42);
+        $this->assertSame('42', (new Sanitizer\RTrim())->sanitize(42));
     }
 
     public function testRTrimSanitizerValueBoolean()
     {
-        $this->setExpectedException('\InvalidArgumentException', 'type');
-        (new Sanitizer\RTrim())->sanitize(true);
+        $this->assertSame('1', (new Sanitizer\RTrim())->sanitize(true));
     }
 
     public function testRTrimSanitizerValueNull()
@@ -111,14 +105,12 @@ class SanitizerFilterTest extends PHPUnit_Framework_TestCase
 
     public function testLowerSanitizerValueInt()
     {
-        $this->setExpectedException('\InvalidArgumentException', 'type');
-        (new Sanitizer\Lower())->sanitize(42);
+        $this->assertSame('42', (new Sanitizer\Lower())->sanitize(42));
     }
 
     public function testLowerSanitizerValueBoolean()
     {
-        $this->setExpectedException('\InvalidArgumentException', 'type');
-        (new Sanitizer\Lower())->sanitize(true);
+        $this->assertSame('1', (new Sanitizer\Lower())->sanitize(true));
     }
 
     public function testLowerSanitizerValueNull()
@@ -140,14 +132,12 @@ class SanitizerFilterTest extends PHPUnit_Framework_TestCase
 
     public function testUpperSanitizerValueInt()
     {
-        $this->setExpectedException('\InvalidArgumentException', 'type');
-        (new Sanitizer\Upper())->sanitize(42);
+        $this->assertSame('42', (new Sanitizer\Upper())->sanitize(42));
     }
 
     public function testUpperSanitizerValueBoolean()
     {
-        $this->setExpectedException('\InvalidArgumentException', 'type');
-        (new Sanitizer\Upper())->sanitize(true);
+        $this->assertSame('1', (new Sanitizer\Upper())->sanitize(true));
     }
 
     public function testUpperSanitizerValueNull()
@@ -171,14 +161,12 @@ class SanitizerFilterTest extends PHPUnit_Framework_TestCase
 
     public function testStripTagsSanitizerValueInt()
     {
-        $this->setExpectedException('\InvalidArgumentException', 'type');
-        (new Sanitizer\StripTags())->sanitize(42);
+        $this->assertSame('42', (new Sanitizer\StripTags())->sanitize(42));
     }
 
     public function testStripTagsSanitizerValueBoolean()
     {
-        $this->setExpectedException('\InvalidArgumentException', 'type');
-        (new Sanitizer\StripTags())->sanitize(true);
+        $this->assertSame('1', (new Sanitizer\StripTags())->sanitize(true));
     }
 
     public function testStripTagsSanitizerValueNull()
