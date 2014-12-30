@@ -142,6 +142,58 @@ $age = (new Mendo\Filter\FilterFunnel())
     ->filter($age);
 ```
 
+The above could also be written like:
+
+```php
+$age = (new Mendo\Filter\FilterFunnel())
+    ->add('trim')
+    ->add('int')
+    ->add('between', 1, 110)
+    ->add('cast', 'int')
+    ->filter($age);
+```
+
+or
+
+```php
+$age = (new Mendo\Filter\FilterFunnel())
+    ->trim
+    ->int
+    ->between(1, 110)
+    ->cast('int')
+    ->filter($age);
+```
+
+or
+
+```php
+$age = (new Mendo\Filter\FilterFunnel())
+    ->filter($age, 'trim|int|between(1,110)|cast(int)');
+```
+
+### Optional Values
+
+```php
+$age = (new Mendo\Filter\FilterFunnel())
+    ->setOptional()
+    ->addSanitizer('trim')
+    ->addValidator('int')
+    ->addValidator('between', 1, 110)
+    ->addSanitizer('cast', 'int')
+    ->filter($age);
+```
+
+or
+
+```php
+$age = (new Mendo\Filter\FilterFunnel())
+    ->filter($age, 'optional|trim|int|between(1,110)|cast(int)');
+```
+
+If ```$age``` is an empty string or null, the filter funnel will return null without any error messages as the field is optional.
+
+### Adding Custom Filters
+
 To add your own custom filters into the class map, use the ```FilterFunnelFactory``` factory class:
 
 ```php

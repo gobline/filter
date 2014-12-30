@@ -31,12 +31,6 @@ class FilterFunnelFactory
      */
     public function createFunnel()
     {
-        $funnel = new FilterFunnel();
-
-        if ($this->filterClassMap) {
-            $funnel->setFilterClassMap($this->filterClassMap);
-        }
-
-        return $funnel;
+        return new FilterFunnel($this->filterClassMap);
     }
 }
