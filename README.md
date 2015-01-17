@@ -46,7 +46,6 @@ Example:
 
 ### Built-in Validators
 
-Data validators:
 * Alpha
 * Alphanum
 * Between
