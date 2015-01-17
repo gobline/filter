@@ -37,6 +37,7 @@ class FilterClassMap
             'min' => '\\Mendo\\Filter\\Validator\\Min',
             'notags' => '\\Mendo\\Filter\\Validator\\NoTags',
             'regex' => '\\Mendo\\Filter\\Validator\\Regex',
+            'required' => '\\Mendo\\Filter\\Validator\\Required',
             'value' => '\\Mendo\\Filter\\Validator\\Value',
         ];
 

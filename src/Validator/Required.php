@@ -5,7 +5,7 @@ namespace Mendo\Filter\Validator;
 /**
  * @author Mathieu Decaffmeyer <mdecaffmeyer@gmail.com>
  */
-class NotEmpty extends AbstractValidator
+class Required extends AbstractValidator
 {
     private $value;
 
@@ -23,11 +23,10 @@ class NotEmpty extends AbstractValidator
 
         $this->value = $value;
 
-        if (!is_string($value)) {
-            throw new \InvalidArgumentException('Unexpected type: '.gettype($value));
-        }
-
-        if ($value === '') {
+        if (
+            $value === null ||
+            (is_string($value) && trim($value) === '')
+        ) {
             $this->addMessage();
 
             return false;
@@ -41,7 +40,7 @@ class NotEmpty extends AbstractValidator
      */
     protected function getMessageTemplates()
     {
-        return ['The input can\'t be empty'];
+        return ['The input is required'];
     }
 
     /**
