@@ -72,6 +72,7 @@ This is because it is important to know that *data validators* may expect the va
 whereas *data type validators* will never throw exceptions.
 
 *Data type validators* include: Alpha, Alphanum, Boolean, Email, Float, Int, Scalar
+
 *Data validators* include: Between, Length, Max, Min, NoTags, NotEmpty, Regex, Value
 
 ### Error messages
