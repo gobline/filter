@@ -134,7 +134,8 @@ class FilterFunnelTest extends PHPUnit_Framework_TestCase
         $map = new FilterClassMap();
         $map->addValidator('dummy', 'DummyValidator');
 
-        $factory = new FilterFunnelFactory($map);
+        $factory = new FilterFunnelFactory();
+        $factory->setFilterClassMap($map);
 
         $funnel = $factory->createFunnel()
             ->addValidator('dummy')

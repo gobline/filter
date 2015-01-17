@@ -22,7 +22,7 @@ class ObjectFilterTest extends PHPUnit_Framework_TestCase
     {
         $name = '  Mathieu  ';
         $age = '  31  ';
-        $gender = '  M  ';
+        $gender = 'M';
 
         $person = new Person($name, $age, $gender);
 
@@ -131,10 +131,10 @@ class Person implements FilterableInterface
     public function getRules()
     {
         return [
-            'name' => 'trim|alpha|length(2,50)',
-            'age' => 'trim|int|between(0,110)|cast(int)',
-            'gender' => 'trim|value(M,F)',
-            'deceased' => 'trim|boolean|cast(boolean)',
+            'name' => 'required|trim|alpha|length(2,50)',
+            'age' => 'required|trim|int|between(0,110)|cast(int)',
+            'gender' => 'required|value(M,F)',
+            'deceased' => 'required|boolean|cast(boolean)',
             'email' => 'optional|trim|email',
         ];
     }
