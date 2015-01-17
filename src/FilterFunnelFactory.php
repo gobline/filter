@@ -19,18 +19,18 @@ class FilterFunnelFactory
     private $filterClassMap;
 
     /**
-     * @param FilterClassMap $filterClassMap
-     */
-    public function __construct(FilterClassMap $filterClassMap = null)
-    {
-        $this->filterClassMap = $filterClassMap;
-    }
-
-    /**
      * @return FilterFunnel
      */
     public function createFunnel()
     {
         return new FilterFunnel($this->filterClassMap);
+    }
+
+    /**
+     * @param FilterClassMap $filterClassMap
+     */
+    public function setFilterClassMap(FilterClassMap $filterClassMap)
+    {
+        $this->filterClassMap = $filterClassMap;
     }
 }
