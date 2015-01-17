@@ -30,7 +30,7 @@ class NoTags extends AbstractValidator
         $this->value = $value;
 
         if (!is_string($value)) {
-            throw new \InvalidArgumentException('Unexpected type: '.gettype($value));
+            return true;
         }
 
         if (strlen($value) !== strlen(strip_tags($value, $this->allowedTags))) {

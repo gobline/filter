@@ -30,10 +30,7 @@ Example:
 
 ## Validators
 
-There are two types of validators.
-
-* **data validators** check if the data meets certain qualifications.
-* **data type validators** (or simply type validators) check if the variable is of a certain data type.
+Example:
 
 ```php
 (new Mendo\Filter\Validator\Email())->isValid('mdecaffmeyer@gmail.com') // returns true
@@ -53,7 +50,10 @@ Data validators:
 * Alpha
 * Alphanum
 * Between
+* Boolean *('', '0', '1', 0 and 1 are considered valid booleans)*
 * Email
+* Float *(numeric strings are considered valid integers)*
+* Int *(numeric strings are considered valid integers)*
 * Length
 * Max
 * Min
@@ -61,12 +61,19 @@ Data validators:
 * NotEmpty
 * Regex
 * Value
-
-Data type validators:
-* Boolean *('', '0', '1', 0 and 1 are considered valid booleans)*
-* Float *(numeric strings are considered valid integers)*
-* Int *(numeric strings are considered valid integers)*
 * Scalar
+
+#### Note:
+
+A distinction can been made between two groups of validators:
+* **data validators** check if the data meets certain qualifications.
+* **data type validators** check if the variable is of a certain data type.
+
+This is because it is important to know that *data validators* may expect the variable to filter to be of a specific type, and will consequently throw an exception if the type is unexpected (e.g. *Length* validator expects a string),
+whereas *data type validators* will never throw exceptions.
+
+*Data type validators* include: Alpha, Alphanum, Boolean, Email, Float, Int, Scalar
+*Data validators* include: Between, Length, Max, Min, NoTags, NotEmpty, Regex, Value
 
 ### Error messages
 

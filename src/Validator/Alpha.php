@@ -30,7 +30,9 @@ class Alpha extends AbstractValidator
         $this->value = $value;
 
         if (!is_string($value)) {
-            throw new \InvalidArgumentException('Unexpected type: '.gettype($value));
+            $this->addMessage();
+
+            return false;
         }
 
         if ($this->allowedChars !== '') {
