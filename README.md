@@ -57,7 +57,7 @@ Example:
 * Max
 * Min
 * NoTags
-* NotEmpty
+* Required
 * Regex
 * Value
 * Scalar
@@ -73,7 +73,7 @@ whereas *data type validators* will never throw exceptions.
 
 *Data type validators* include: Alpha, Alphanum, Boolean, Email, Float, Int, Scalar
 
-*Data validators* include: Between, Length, Max, Min, NoTags, NotEmpty, Regex, Value
+*Data validators* include: Between, Length, Max, Min, NoTags, Required, Regex, Value
 
 ### Error messages
 
