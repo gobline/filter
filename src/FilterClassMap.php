@@ -29,6 +29,7 @@ class FilterClassMap
             'alphanum' => '\\Mendo\\Filter\\Validator\\Alphanum',
             'between' => '\\Mendo\\Filter\\Validator\\Between',
             'boolean' => '\\Mendo\\Filter\\Validator\\Boolean',
+            'callback' => '\\Mendo\\Filter\\Validator\\Callback',
             'email' => '\\Mendo\\Filter\\Validator\\Email',
             'float' => '\\Mendo\\Filter\\Validator\\Float',
             'int' => '\\Mendo\\Filter\\Validator\\Int',
