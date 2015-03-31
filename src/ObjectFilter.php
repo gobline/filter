@@ -50,7 +50,7 @@ class ObjectFilter
                 $value = $object->{'get'.ucfirst($property)}();
             } elseif (is_callable([$object, 'is'.ucfirst($property)])) {
                 $value = $object->{'is'.ucfirst($property)}();
-            } elseif ((new ReflectionObject($object))->getProperty($property)->isPublic()) {
+            } elseif ((new \ReflectionObject($object))->getProperty($property)->isPublic()) {
                 $value = $object->$property;
             } else {
                 throw new \RuntimeException(
@@ -142,7 +142,7 @@ class ObjectFilter
                 $setter = 'set'.ucfirst($property);
                 if (is_callable([$object, $setter])) {
                     $object->$setter($sanitizedValue);
-                } elseif ((new ReflectionObject($object))->getProperty($property)->isPublic()) {
+                } elseif ((new \ReflectionObject($object))->getProperty($property)->isPublic()) {
                     $object->$property = $sanitizedValue;
                 } else {
                     throw new \RuntimeException(
