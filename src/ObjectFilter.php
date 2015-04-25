@@ -46,6 +46,12 @@ class ObjectFilter
                     get_class($object).'->getRules() returns an invalid array format (property name cannot be empty)');
             }
 
+            $filterArrayElements = false;
+            if (strpos($property, '[') !== false) {
+                $property = substr($property, 0, -2);
+                $filterArrayElements = true;
+            }
+
             if (is_callable([$object, 'get'.ucfirst($property)])) {
                 $value = $object->{'get'.ucfirst($property)}();
             } elseif (is_callable([$object, 'is'.ucfirst($property)])) {
@@ -59,9 +65,7 @@ class ObjectFilter
 
             $filterFunnel = $this->filterFunnelFactory->createFunnel();
 
-            if (!is_array($filters)) {
-                $sanitizedValue = $filterFunnel->filter($value, $filters);
-            } else {
+            if (is_array($filters)) {
                 foreach ($filters as $filter) {
                     $name = null;
                     $params = null;
@@ -106,6 +110,11 @@ class ObjectFilter
                             $type = $filter['type'];
                         }
                     } else {
+                        if ($filter === 'optional') {
+                            $filterFunnel->setOptional();
+                            continue;
+                        }
+
                         $name = $filter;
                         $params = [];
                     }
@@ -129,16 +138,42 @@ class ObjectFilter
                     if ($message) {
                         $filterFunnel->setMessageTemplate($message);
                     }
+                } // end foreach
+
+                $filters = null;
+            }
+
+            $updateProperty = false;
+
+            if ($filterArrayElements) {
+                if (!is_array($value)) {
+                    throw new \RuntimeException(
+                        get_class($object).'->getRules() returns an invalid array format (invalid array property)');
                 }
 
-                $sanitizedValue = $filterFunnel->filter($value);
+                $sanitizedValue = [];
+                foreach ($value as $k => $v) {
+                    $sanitizedValue[$k] = $filterFunnel->filter($v, $filters);
+
+                    if ($sanitizedValue[$k] !== $v) {
+                        $updateProperty = true;
+                    }
+
+                    if ($filterFunnel->hasMessages()) {
+                        $this->messages[$property][$k] = $filterFunnel->getMessages();
+                    }
+                }
+            } else {
+                $sanitizedValue = $filterFunnel->filter($value, $filters);
+
+                $updateProperty = ($sanitizedValue !== $value);
+
+                if ($filterFunnel->hasMessages()) {
+                    $this->messages[$property] = $filterFunnel->getMessages();
+                }
             }
 
-            if ($filterFunnel->hasMessages()) {
-                $this->messages[$property] = $filterFunnel->getMessages();
-            }
-
-            if ($sanitizedValue !== $value) {
+            if ($updateProperty) {
                 $setter = 'set'.ucfirst($property);
                 if (is_callable([$object, $setter])) {
                     $object->$setter($sanitizedValue);
@@ -149,7 +184,7 @@ class ObjectFilter
                         get_class($object).'->getRules() returns an invalid array format (property "'.$property.'" has no setter)');
                 }
             }
-        }
+        } // end foreach
 
         return ($this->hasMessages()) ? null : $object;
     }
