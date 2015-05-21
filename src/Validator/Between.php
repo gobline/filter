@@ -80,9 +80,9 @@ class Between extends AbstractValidator
     protected function getMessageTemplates()
     {
         if ($this->isStringComparison) {
-            return ['The input is not between "%min%" and "%max%" (inclusively)'];
+            return ['The input must be between "%min%" and "%max%"'];
         } else {
-            return ['The input is not between %min% and %max% (inclusively)'];
+            return ['The input must be between %min% and %max%'];
         }
     }
 
