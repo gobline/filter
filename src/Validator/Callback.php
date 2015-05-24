@@ -29,7 +29,7 @@ class Callback extends AbstractValidator
 
         $this->value = $value;
 
-        if (!call_user_func($this->callback)) {
+        if (!call_user_func($this->callback, $value)) {
             $this->addMessage();
 
             return false;
