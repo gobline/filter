@@ -25,6 +25,14 @@ class ValidatorFilterTest extends PHPUnit_Framework_TestCase
         $this->assertFalse((new Validator\Email())->isValid(42));
     }
 
+    public function testUuidValidator()
+    {
+        $this->assertTrue((new Validator\Uuid())->isValid('25769c6c-d34d-4bfe-ba98-e0ee856f3e7a'));
+        $this->assertFalse((new Validator\Uuid())->isValid('hello'));
+        $this->assertFalse((new Validator\Uuid())->isValid(''));
+        $this->assertFalse((new Validator\Uuid())->isValid(42));
+    }
+
     public function testNoTagsValidator()
     {
         $this->assertTrue((new Validator\NoTags())->isValid('hello world'));

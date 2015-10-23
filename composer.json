@@ -27,6 +27,7 @@
     },
     "require-dev": {
         "mendoframework/translator": "~1.0",
+        "ramsey/uuid": "^3.0",
         "pimple/pimple": "3.0.*@dev",
         "phpunit/phpunit": "4.3.*@dev",
         "fabpot/php-cs-fixer": "*@dev"
