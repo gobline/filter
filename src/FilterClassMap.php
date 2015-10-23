@@ -39,6 +39,7 @@ class FilterClassMap
             'notags' => '\\Mendo\\Filter\\Validator\\NoTags',
             'regex' => '\\Mendo\\Filter\\Validator\\Regex',
             'required' => '\\Mendo\\Filter\\Validator\\Required',
+            'uuid' => '\\Mendo\\Filter\\Validator\\Uuid',
             'value' => '\\Mendo\\Filter\\Validator\\Value',
         ];
 

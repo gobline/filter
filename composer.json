@@ -22,7 +22,8 @@
         "php": ">=5.6.0"
     },
     "suggest": {
-        "mendoframework/translator": "Allows to translate the error messages"
+        "mendoframework/translator": "Allows to translate the error messages",
+        "ramsey/uuid": "Allows to validate UUIDs"
     },
     "require-dev": {
         "mendoframework/translator": "~1.0",
