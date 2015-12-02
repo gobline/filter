@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Mendo Framework
+ * Gobline Framework
  *
  * (c) Mathieu Decaffmeyer <mdecaffmeyer@gmail.com>
  *
@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-use Mendo\Filter\ObjectFilter;
-use Mendo\Filter\FilterableInterface;
-use Mendo\Filter\ObjectFilterFactory;
+use Gobline\Filter\ObjectFilter;
+use Gobline\Filter\FilterableInterface;
+use Gobline\Filter\ObjectFilterFactory;
 
 /**
  * @author Mathieu Decaffmeyer <mdecaffmeyer@gmail.com>
@@ -58,7 +58,7 @@ class ObjectFilterTest extends PHPUnit_Framework_TestCase
     {
         $factory = new ObjectFilterFactory();
 
-        $this->assertInstanceOf('Mendo\Filter\ObjectFilter', $factory->createOjectFilter());
+        $this->assertInstanceOf('Gobline\Filter\ObjectFilter', $factory->createOjectFilter());
     }
 }
 

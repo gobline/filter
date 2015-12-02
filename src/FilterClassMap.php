@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Mendo Framework
+ * Gobline Framework
  *
  * (c) Mathieu Decaffmeyer <mdecaffmeyer@gmail.com>
  *
@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Mendo\Filter;
+namespace Gobline\Filter;
 
-use Mendo\Filter\Validator\ValidatorInterface;
-use Mendo\Filter\Sanitizer\SanitizerInterface;
+use Gobline\Filter\Validator\ValidatorInterface;
+use Gobline\Filter\Sanitizer\SanitizerInterface;
 
 /**
  * @author Mathieu Decaffmeyer <mdecaffmeyer@gmail.com>
@@ -25,32 +25,32 @@ class FilterClassMap
     public function __construct()
     {
         $this->validators = [
-            'alpha' => '\\Mendo\\Filter\\Validator\\Alpha',
-            'alphanum' => '\\Mendo\\Filter\\Validator\\Alphanum',
-            'between' => '\\Mendo\\Filter\\Validator\\Between',
-            'boolean' => '\\Mendo\\Filter\\Validator\\Boolean',
-            'callback' => '\\Mendo\\Filter\\Validator\\Callback',
-            'email' => '\\Mendo\\Filter\\Validator\\Email',
-            'float' => '\\Mendo\\Filter\\Validator\\Float',
-            'int' => '\\Mendo\\Filter\\Validator\\Int',
-            'length' => '\\Mendo\\Filter\\Validator\\Length',
-            'max' => '\\Mendo\\Filter\\Validator\\Max',
-            'min' => '\\Mendo\\Filter\\Validator\\Min',
-            'notags' => '\\Mendo\\Filter\\Validator\\NoTags',
-            'regex' => '\\Mendo\\Filter\\Validator\\Regex',
-            'required' => '\\Mendo\\Filter\\Validator\\Required',
-            'uuid' => '\\Mendo\\Filter\\Validator\\Uuid',
-            'value' => '\\Mendo\\Filter\\Validator\\Value',
+            'alpha' => '\\Gobline\\Filter\\Validator\\Alpha',
+            'alphanum' => '\\Gobline\\Filter\\Validator\\Alphanum',
+            'between' => '\\Gobline\\Filter\\Validator\\Between',
+            'boolean' => '\\Gobline\\Filter\\Validator\\Boolean',
+            'callback' => '\\Gobline\\Filter\\Validator\\Callback',
+            'email' => '\\Gobline\\Filter\\Validator\\Email',
+            'float' => '\\Gobline\\Filter\\Validator\\Float',
+            'int' => '\\Gobline\\Filter\\Validator\\Int',
+            'length' => '\\Gobline\\Filter\\Validator\\Length',
+            'max' => '\\Gobline\\Filter\\Validator\\Max',
+            'min' => '\\Gobline\\Filter\\Validator\\Min',
+            'notags' => '\\Gobline\\Filter\\Validator\\NoTags',
+            'regex' => '\\Gobline\\Filter\\Validator\\Regex',
+            'required' => '\\Gobline\\Filter\\Validator\\Required',
+            'uuid' => '\\Gobline\\Filter\\Validator\\Uuid',
+            'value' => '\\Gobline\\Filter\\Validator\\Value',
         ];
 
         $this->sanitizers = [
-            'cast' => '\\Mendo\\Filter\\Sanitizer\\Cast',
-            'lower' => '\\Mendo\\Filter\\Sanitizer\\Lower',
-            'ltrim' => '\\Mendo\\Filter\\Sanitizer\\LTrim',
-            'rtrim' => '\\Mendo\\Filter\\Sanitizer\\RTrim',
-            'striptags' => '\\Mendo\\Filter\\Sanitizer\\StripTags',
-            'trim' => '\\Mendo\\Filter\\Sanitizer\\Trim',
-            'upper' => '\\Mendo\\Filter\\Sanitizer\\Upper',
+            'cast' => '\\Gobline\\Filter\\Sanitizer\\Cast',
+            'lower' => '\\Gobline\\Filter\\Sanitizer\\Lower',
+            'ltrim' => '\\Gobline\\Filter\\Sanitizer\\LTrim',
+            'rtrim' => '\\Gobline\\Filter\\Sanitizer\\RTrim',
+            'striptags' => '\\Gobline\\Filter\\Sanitizer\\StripTags',
+            'trim' => '\\Gobline\\Filter\\Sanitizer\\Trim',
+            'upper' => '\\Gobline\\Filter\\Sanitizer\\Upper',
         ];
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Mendo\Filter\Validator;
+namespace Gobline\Filter\Validator;
 
 use Ramsey\Uuid\Uuid as UuidImpl;
 

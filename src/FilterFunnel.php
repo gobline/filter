@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Mendo Framework
+ * Gobline Framework
  *
  * (c) Mathieu Decaffmeyer <mdecaffmeyer@gmail.com>
  *
@@ -9,10 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Mendo\Filter;
+namespace Gobline\Filter;
 
-use Mendo\Filter\Validator\ValidatorInterface;
-use Mendo\Filter\Sanitizer\SanitizerInterface;
+use Gobline\Filter\Validator\ValidatorInterface;
+use Gobline\Filter\Sanitizer\SanitizerInterface;
+use Gobline\Translator\Translator;
 
 /**
  * Allows to filter a variable through multiple sanitizers and validators at once.
@@ -221,5 +222,10 @@ class FilterFunnel
     public function getFilterClassMap()
     {
         return $this->filterClassMap;
+    }
+
+    public function setDefaultTranslator(Translator $translator)
+    {
+        AbstractValidator::setDefaultTranslator($translator);
     }
 }

@@ -1,6 +1,6 @@
 {
-    "name": "mendoframework/filter",
-    "description": "Mendo Filter Component",
+    "name": "gobline/filter",
+    "description": "Gobline Filter Component",
     "license": "BSD-3-Clause",
     "authors": [
         {
@@ -9,24 +9,24 @@
         }
     ],
     "keywords": [
-        "mf", "mendoframework", "mendo framework",
+        "gobline", 
         "filter", "sanitizer", "sanitize", "validator", "validate"
     ],
-    "homepage": "https://github.com/mendoframework",
+    "homepage": "https://github.com/gobline",
     "autoload": {
         "psr-4": {
-            "Mendo\\Filter\\": "src/"
+            "Gobline\\Filter\\": "src/"
         }
     },
     "require": {
         "php": ">=5.6.0"
     },
     "suggest": {
-        "mendoframework/translator": "Allows to translate the error messages",
+        "gobline/translator": "Allows to translate the error messages",
         "ramsey/uuid": "Allows to validate UUIDs"
     },
     "require-dev": {
-        "mendoframework/translator": "~1.0",
+        "gobline/translator": "~2.0",
         "ramsey/uuid": "^3.0",
         "pimple/pimple": "3.0.*@dev",
         "phpunit/phpunit": "4.3.*@dev",

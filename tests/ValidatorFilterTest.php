@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Mendo Framework
+ * Gobline Framework
  *
  * (c) Mathieu Decaffmeyer <mdecaffmeyer@gmail.com>
  *
@@ -9,8 +9,8 @@
  * file that was distributed with this source code.
  */
 
-use Mendo\Filter\Validator;
-use Mendo\Translator\Translator;
+use Gobline\Filter\Validator;
+use Gobline\Translator\Translator;
 
 /**
  * @author Mathieu Decaffmeyer <mdecaffmeyer@gmail.com>

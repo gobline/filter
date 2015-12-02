@@ -1,6 +1,6 @@
 <?php
 
-namespace Mendo\Filter\Sanitizer;
+namespace Gobline\Filter\Sanitizer;
 
 /**
  * @author Mathieu Decaffmeyer <mdecaffmeyer@gmail.com>

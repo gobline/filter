@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Mendo Framework
+ * Gobline Framework
  *
  * (c) Mathieu Decaffmeyer <mdecaffmeyer@gmail.com>
  *
@@ -9,7 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Mendo\Filter;
+namespace Gobline\Filter;
+
+use Gobline\Translator\Translator;
 
 /**
  * @author Mathieu Decaffmeyer <mdecaffmeyer@gmail.com>
@@ -17,13 +19,20 @@ namespace Mendo\Filter;
 class FilterFunnelFactory
 {
     private $filterClassMap;
+    private $translator;
 
     /**
      * @return FilterFunnel
      */
     public function createFunnel()
     {
-        return new FilterFunnel($this->filterClassMap);
+        $filterFunnel = new FilterFunnel($this->filterClassMap);
+
+        if ($this->translator) {
+            $filterFunnel->setDefaultTranslator($this->translator);
+        }
+
+        return $filterFunnel;
     }
 
     /**
@@ -32,5 +41,10 @@ class FilterFunnelFactory
     public function setFilterClassMap(FilterClassMap $filterClassMap)
     {
         $this->filterClassMap = $filterClassMap;
+    }
+
+    public function setDefaultTranslator(Translator $translator)
+    {
+        $this->translator = $translator;
     }
 }

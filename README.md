@@ -1,6 +1,6 @@
-# Filter Component - Mendo Framework
+# Filter component
 
-The Mendo Filter component is used to sanitize and/or validate variables.
+The Filter component is used to sanitize and/or validate variables.
 Its power lies in the ability to define "filter funnels" which allow to filter a variable through multiple (built-in or custom) sanitizers and validators easily at once.
 
 There are two kinds of filters:
@@ -13,9 +13,9 @@ There are two kinds of filters:
 Example:
 
 ```php
-(new Mendo\Filter\Sanitizer\LTrim('/'))->sanitize('/some/path/'); // returns "some/path/"
+(new Gobline\Filter\Sanitizer\LTrim('/'))->sanitize('/some/path/'); // returns "some/path/"
 
-(new Mendo\Filter\Sanitizer\Cast('int'))->sanitize('42'); // returns integer 42
+(new Gobline\Filter\Sanitizer\Cast('int'))->sanitize('42'); // returns integer 42
 ```
 
 ### Built-in Sanitizers
@@ -33,15 +33,15 @@ Example:
 Example:
 
 ```php
-(new Mendo\Filter\Validator\Email())->isValid('mdecaffmeyer@gmail.com') // returns true
+(new Gobline\Filter\Validator\Email())->isValid('mdecaffmeyer@gmail.com') // returns true
 
-(new Mendo\Filter\Validator\Length(5))->isValid('foo') // returns false
+(new Gobline\Filter\Validator\Length(5))->isValid('foo') // returns false
 ```
 
 ```php
-(new Mendo\Filter\Validator\Int())->isValid('foo') // returns false, "foo" is not an integer
+(new Gobline\Filter\Validator\Int())->isValid('foo') // returns false, "foo" is not an integer
 
-(new Mendo\Filter\Validator\Int())->isValid(42) // returns true
+(new Gobline\Filter\Validator\Int())->isValid(42) // returns true
 ```
 
 ### Built-in Validators
@@ -80,7 +80,7 @@ whereas *data type validators* will never throw exceptions.
 It is possible to retrieve the validator's error messages in case data failed validating.
 
 ```php
-$validator = new Mendo\Filter\Validator\Int();
+$validator = new Gobline\Filter\Validator\Int();
 
 if (!$validator->isValid("foo")) {
     echo $validator->getMessage(); // prints "The input is not a valid number"
@@ -90,7 +90,7 @@ if (!$validator->isValid("foo")) {
 Customization of error messages is supported:
 
 ```php
-$validator = new Mendo\Filter\Validator\Int();
+$validator = new Gobline\Filter\Validator\Int();
 $validator->setMessageTemplate('%value% is not a valid number');
 
 if (!$validator->isValid("foo")) {
@@ -107,7 +107,7 @@ Its default message is: *The input is not between "%min%" and "%max%" (inclusive
 You can add a translator for your error messages globally
 
 ```php
-Mendo\Filter\Validator\AbstractValidator::setDefaultTranslator($translator);
+Gobline\Filter\Validator\AbstractValidator::setDefaultTranslator($translator);
 ```
 
 or for an instance
@@ -123,7 +123,7 @@ The real value of the component is its ability to create filter funnels. Filter 
 Below is an example that trims the variable and checks if it contains a valid age (between 0 and 110). Eventually it will cast the variable to an integer.
 
 ```php
-$funnel = (new Mendo\Filter\FilterFunnel())
+$funnel = (new Gobline\Filter\FilterFunnel())
     ->addSanitizer(new Sanitizer\Trim())
     ->addValidator(new Validator\Int())
     ->addValidator(new Validator\Between(0, 110))
@@ -141,7 +141,7 @@ It is possible to register filters in a class map in order to reference the filt
 Built-in filters are registered in the class map by default. The example above could be rewritten as follows:
 
 ```php
-$age = (new Mendo\Filter\FilterFunnel())
+$age = (new Gobline\Filter\FilterFunnel())
     ->addSanitizer('trim')
     ->addValidator('int')
     ->addValidator('between', 1, 110)
@@ -152,7 +152,7 @@ $age = (new Mendo\Filter\FilterFunnel())
 The above could also be written like:
 
 ```php
-$age = (new Mendo\Filter\FilterFunnel())
+$age = (new Gobline\Filter\FilterFunnel())
     ->add('trim')
     ->add('int')
     ->add('between', 1, 110)
@@ -163,7 +163,7 @@ $age = (new Mendo\Filter\FilterFunnel())
 or
 
 ```php
-$age = (new Mendo\Filter\FilterFunnel())
+$age = (new Gobline\Filter\FilterFunnel())
     ->trim
     ->int
     ->between(1, 110)
@@ -174,14 +174,14 @@ $age = (new Mendo\Filter\FilterFunnel())
 or
 
 ```php
-$age = (new Mendo\Filter\FilterFunnel())
+$age = (new Gobline\Filter\FilterFunnel())
     ->filter($age, 'trim|int|between(1,110)|cast(int)');
 ```
 
 ### Optional Values
 
 ```php
-$age = (new Mendo\Filter\FilterFunnel())
+$age = (new Gobline\Filter\FilterFunnel())
     ->setOptional()
     ->addSanitizer('trim')
     ->addValidator('int')
@@ -193,7 +193,7 @@ $age = (new Mendo\Filter\FilterFunnel())
 or
 
 ```php
-$age = (new Mendo\Filter\FilterFunnel())
+$age = (new Gobline\Filter\FilterFunnel())
     ->filter($age, 'optional|trim|int|between(1,110)|cast(int)');
 ```
 
@@ -215,7 +215,7 @@ $funnel = $factory->createFunnel();
 You can still set custom messages for validators when using funnels:
 
 ```php
-$age = (new Mendo\Filter\FilterFunnel())
+$age = (new Gobline\Filter\FilterFunnel())
     ->addSanitizer('trim')
     ->addValidator('int')
     ->setMessageTemplate('"%value%" is not a valid number')
@@ -282,9 +282,9 @@ class Person implements FilterableInterface
 
 ## Installation
 
-You can install Mendo Filter using the dependency management tool [Composer](https://getcomposer.org/).
+You can install the Filter component using the dependency management tool [Composer](https://getcomposer.org/).
 Run the *require* command to resolve and download the dependencies:
 
 ```
-composer require mendoframework/filter
+composer require gobline/filter
 ```

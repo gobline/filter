@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Mendo Framework
+ * Gobline Framework
  *
  * (c) Mathieu Decaffmeyer <mdecaffmeyer@gmail.com>
  *
@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-use Mendo\Filter\FilterFunnel;
-use Mendo\Filter\FilterFunnelFactory;
-use Mendo\Filter\FilterClassMap;
-use Mendo\Filter\Sanitizer;
-use Mendo\Filter\Validator;
-use Mendo\Filter\Validator\AbstractValidator;
+use Gobline\Filter\FilterFunnel;
+use Gobline\Filter\FilterFunnelFactory;
+use Gobline\Filter\FilterClassMap;
+use Gobline\Filter\Sanitizer;
+use Gobline\Filter\Validator;
+use Gobline\Filter\Validator\AbstractValidator;
 
 /**
  * @author Mathieu Decaffmeyer <mdecaffmeyer@gmail.com>

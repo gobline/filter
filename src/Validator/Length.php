@@ -1,6 +1,6 @@
 <?php
 
-namespace Mendo\Filter\Validator;
+namespace Gobline\Filter\Validator;
 
 /**
  * @author Mathieu Decaffmeyer <mdecaffmeyer@gmail.com>

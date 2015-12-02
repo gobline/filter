@@ -1,8 +1,8 @@
 <?php
 
-namespace Mendo\Filter\Validator;
+namespace Gobline\Filter\Validator;
 
-use Mendo\Translator\TranslatorInterface;
+use Gobline\Translator\TranslatorInterface;
 
 /**
  * @author Mathieu Decaffmeyer <mdecaffmeyer@gmail.com>

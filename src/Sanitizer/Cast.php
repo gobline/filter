@@ -1,8 +1,8 @@
 <?php
 
-namespace Mendo\Filter\Sanitizer;
+namespace Gobline\Filter\Sanitizer;
 
-use Mendo\Filter\Validator;
+use Gobline\Filter\Validator;
 
 /**
  * @author Mathieu Decaffmeyer <mdecaffmeyer@gmail.com>
